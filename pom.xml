@@ -6,7 +6,15 @@
 
   <groupId>org.example</groupId>
   <artifactId>HiSpring</artifactId>
+  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>01_anno</module>
+    <module>02_xml</module>
+    <module>03_wiring_auto</module>
+    <module>04_wiring_interface</module>
+    <module>05_webmvc</module>
+  </modules>
 
   <name>HiSpring</name>
   <!-- FIXME change it to the project's website -->
