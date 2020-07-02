@@ -12,7 +12,18 @@ public class User {
     private Date bornDate;
     private String[] hobbys;
     private Set<String> phones;
+
+    public List<Address> getAdds() {
+        return adds;
+    }
+
     private List<String> names;
+
+    public void setAdds(List<Address> adds) {
+        this.adds = adds;
+    }
+
+    private List<Address> adds;
     private Map<String,String> countries;
     private Properties files;
     // 自建类型
