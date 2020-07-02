@@ -32,6 +32,9 @@ public class AppTest {
     @Qualifier("userServiceImpl3")
     private UserService us3;
 
+    //Resource 可以代替Autowired和Qualifier
+    @Resource(name="ff")
+    private UserService us4;
     @Test
     public void test0() {
         us.add();
@@ -51,4 +54,10 @@ public class AppTest {
     public void test4() {
         us3.add();
     }
+
+    @Test
+    public void test5() {
+        us4.add();
+    }
+
 }

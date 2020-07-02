@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 单例：单实例 -->
+    <!-- 要工厂生产的对象 -->
+    <bean id="mS" class="org.example.MessageService"></bean>
+
+    <bean id="messagesPrinter" class="org.example.MessagesPrinter" >
+        <property name="messageService" ref="mS"/>
+    </bean>
+
+    <bean id="addr" class="org.example.Address">
+        <property name="id" value="1"/>
+        <property name="city" value="bj"/>
+    </bean>
+
+    <!-- Set注入 -->
+    <bean id="user" class="org.example.User">
+        <!-- 简单：jdk8种基本数据类型  String  Date -->
+        <property name="id" value="10"/>
+        <property name="password" value="123abc"/>
+        <property name="sex" value="male"/>
+        <property name="age" value="19"/>
+        <property name="bornDate" value="2020/12/12 12:20:30"/>
+
+        <!-- 数组 -->
+        <property name="hobbys">
+            <array>
+                <value>football</value>
+                <value>basketball</value>
+            </array>
+        </property>
+
+        <!-- 集合 -->
+        <property name="names">
+            <list>
+                <value>tom</value>
+                <value>jack</value>
+            </list>
+        </property>
+        <property name="phones">
+            <set>
+                <value>131111111</value>
+                <value>131222222</value>
+            </set>
+        </property>
+        <property name="countries">
+            <map>
+                <entry key="zh" value="china"></entry>
+                <entry key="en" value="english"></entry>
+            </map>
+        </property>
+        <property name="files">
+            <props>
+                <prop key="url">jdbc:mysql:xxx</prop>
+                <prop key="username">root</prop>
+            </props>
+        </property>
+
+        <!-- 自建类型 -->
+        <property name="address" ref="addr"></property>
+     </bean>
+
+
+    <!-- 构造注入 -->
+    <bean id="student" class="org.example.Student">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="name" value="shine"/>
+        <constructor-arg name="sex" value="male"/>
+        <constructor-arg name="age" value="19"/>
+    </bean>
+
+</beans>
