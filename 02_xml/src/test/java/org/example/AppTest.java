@@ -12,8 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-context.xml")
-public class AppTest 
-{
+public class AppTest {
 
     @Autowired
     @Qualifier("addr")
@@ -24,9 +23,8 @@ public class AppTest
     private Address address2;
 
     @Test
-    public  void test1(){
-
-
+    public void test1() {
+        System.out.println(address.getCity());
+        System.out.println(address.getId());
     }
-
 }

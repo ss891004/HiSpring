@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+xmlns其实是XML Namespace的缩写，可译为“XML命名空间”
+
+使用语法： xmlns:namespace-prefix="namespaceURI"。其中namespace-prefix为自定义前缀，只要在这个XML文档中保证前缀不重复即可
+
+xmlns和xmlns:xsi有什么不同？
+
+xmlns表示默认的Namespace。例如Spring XML文档中的
+xmlns="http://www.springframework.org/schema/beans"
+这一句表示该文档默认的XML Namespace为http://www.springframwork.org/schema/beans。对于默认的Namespace中的元素，可以不使用前缀。例如Spring XML文档中的
+
+<bean id="xxx" class="xxx.xxx.xxx.Xxx">
+  <property name="xxx" value="xxxx"/>
+</bean>
+xmlns:xsi表示使用xsi作为前缀的Namespace，当然前缀xsi需要在文档中声明。
+
+xsi:schemaLocation有何作用？
+
+xsi:schemaLocation属性其实是Namespace为http://www.w3.org/2001/XMLSchema-instance里的schemaLocation属性，
+正是因为我们一开始声明了xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+这里才写作xsi:schemaLocation（当然一般都使用这个前缀）。它定义了XML Namespace和对应的 XSD（Xml Schema Definition）文档的位置的关系。
+它的值由一个或多个URI引用对组成，两个URI之间以空白符分隔（空格和换行均可）。
+第一个URI是定义的 XML Namespace的值，第二个URI给出Schema文档的位置，Schema处理器将从这个位置读取Schema文档，该文档的targetNamespace必须与第一个URI相匹配。
+
+-->
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -16,6 +42,7 @@
     <bean id="messagesPrinter" class="org.example.MessagesPrinter" >
         <property name="messageService" ref="mS"/>
     </bean>
+
     <!-- 构造注入 -->
     <bean id="student" class="org.example.Student">
         <constructor-arg name="id" value="1" />
@@ -25,7 +52,7 @@
     </bean>
 
     <bean id="addr" class="org.example.Address">
-        <property name="id" value="1"/>
+        <property name="id" value="123456"/>
         <property name="city" value="bj"/>
     </bean>
 
@@ -35,7 +62,7 @@
     </bean>
 
     <!-- Set注入 -->
-    <bean id="user" class="org.example.User">
+    <bean id="user" class="org.example.User" >
         <!-- 简单：jdk8种基本数据类型  String  Date -->
         <property name="id" value="10"/>
         <property name="password" value="123abc"/>

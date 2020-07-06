@@ -12,33 +12,36 @@ public class User {
     private Date bornDate;
     private String[] hobbys;
     private Set<String> phones;
-
-    public List<Address> getAdds() {
-        return adds;
-    }
-
     private List<String> names;
-
-    public void setAdds(List<Address> adds) {
-        this.adds = adds;
-    }
-
     private List<Address> adds;
-    private Map<String,String> countries;
+    private Map<String, String> countries;
     private Properties files;
     // 自建类型
     private Address address;
+
 
     public User() {
         System.out.println("构造User对象");
     }
 
-    @PostConstruct
-    public void a(){
-        System.out.println("int");
+    public List<Address> getAdds() {
+        return adds;
     }
+
+
+    public void setAdds(List<Address> adds) {
+        this.adds = adds;
+    }
+
+    @PostConstruct
+    //初始化
+    public void a() {
+        System.out.println("init");
+    }
+
     @PreDestroy
-    public void b(){
+    //销毁
+    public void b() {
         System.out.println("destroy");
     }
 
