@@ -7,15 +7,15 @@ public class User {
     private String username;
     private String password;
     private Boolean gender;
-    private Date registTime;
+    private Date registerTime;
 
     public User(){}
-    public User(Integer id, String username, String password, Boolean gender, Date registTime) {
+    public User(Integer id, String username, String password, Boolean gender, Date registerTime) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.gender = gender;
-        this.registTime = registTime;
+        this.registerTime = registerTime;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", gender=" + gender +
-                ", registTime=" + registTime +
+                ", registTime=" + registerTime +
                 '}';
     }
 
@@ -61,11 +61,11 @@ public class User {
         this.gender = gender;
     }
 
-    public Date getRegistTime() {
-        return registTime;
+    public Date getRegisterTime() {
+        return registerTime;
     }
 
-    public void setRegistTime(Date registTime) {
-        this.registTime = registTime;
+    public void setRegisterTime(Date registTime) {
+        this.registerTime = registTime;
     }
 }

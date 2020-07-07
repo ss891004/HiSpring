@@ -33,12 +33,12 @@
     <!-- 注册mapper文件 -->
     <mappers>
         <!--<mapper resource="UserDAOMapper.xml"/>-->
-        <mapper resource="org/example/dao/UserDAOMapper.xml"/>
-      <mapper resource="org/example/dao/StudentDAOMapper.xml"/>
-        <!--   <mapper resource="com/qf/dao/PassengerDAOMapper.xml"/>
-       <mapper resource="com/qf/dao/PassportDAOMapper.xml"/>
-       <mapper resource="com/qf/dao/DepartmentDAOMapper.xml"/>
-       <mapper resource="com/qf/dao/EmployeeDAOMapper.xml"/>
-     <mapper resource="com/qf/dao/SubjectDAOMapper.xml"/>-->
+        <mapper resource="mapper/UserDAOMapper.xml"/>
+         <mapper resource="mapper/StudentDAOMapper.xml"/>
+        <!--      <mapper resource="com/qf/dao/PassengerDAOMapper.xml"/>
+         <mapper resource="com/qf/dao/PassportDAOMapper.xml"/>
+         <mapper resource="com/qf/dao/DepartmentDAOMapper.xml"/>
+         <mapper resource="com/qf/dao/EmployeeDAOMapper.xml"/>
+       <mapper resource="com/qf/dao/SubjectDAOMapper.xml"/>-->
     </mappers>
 </configuration>

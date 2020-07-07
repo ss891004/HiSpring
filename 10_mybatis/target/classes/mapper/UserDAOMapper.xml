@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!--namespace 所需实现的接口的全限定名-->
 <mapper namespace="org.example.dao.UserDAO">
 
     <resultMap id="user_resultMap" type="User">
@@ -10,55 +11,56 @@
         <result column="username" property="username"></result>
         <result column="password" property="password"></result>
         <result column="gender" property="gender"></result>
-        <result column="regist_time" property="registTime"></result>
+        <result column="register_time" property="registerTime"></result>
     </resultMap>
 
-    <!-- 描述方法 -->
+    <!-- 描述方法   arg0 arg1 arg2 -->
     <!--<select id="queryUserById" resultType="User">
-        select id,username,password,gender,regist_time as registTime
+        select id,username,password,gender,register_time as registerTime
         from t_user
         where id=#{arg0}
     </select>-->
 
+    <!--id为所需重写的接口抽象方法 resultType 查询后所需返回的对象类型  resultMap 映射规则-->
+    <!--#{arg0} 方法的第一个形参-->
     <select id="queryUserById" resultMap="user_resultMap">
-        select id,username,password,gender,regist_time
+        select id,username,password,gender,register_time
         from t_user
         where id=#{arg0}
     </select>
 
     <select id="queryUserByIdAndUsername" resultType="User">
-        select id,username,password,gender,regist_time as registTime
+        select id,username,password,gender,register_time as registerTime
         from t_user
         where id=#{param1} and username=#{param2}
     </select>
 
     <select id="queryUserByIdAndPassword" resultType="User">
-        select id,username,password,gender,regist_time as registTime
+        select id,username,password,gender,register_time as registerTime
         from t_user
         where id=#{id} and password = #{password}
     </select>
 
     <select id="queryUserByIdAndPassword2" resultType="User">
-        select id,username,password,gender,regist_time as registTime
+        select id,username,password,gender,register_time as registerTime
         from t_user
         where id=#{id} and password = #{password}
     </select>
 
     <select id="queryUserByIdAndPassword3" resultType="User">
-        select id,username,password,gender,regist_time as registTime
+        select id,username,password,gender,register_time as registerTime
         from t_user
         where id=#{id} and password = #{password}
     </select>
 
     <select id="queryUserByUsername" resultType="User">
-        select id,username,password,gender,regist_time as registTime
+        select id,username,password,gender,register_time as registerTime
         from t_user
         where username like concat('%',#{username},'%')
     </select>
 
     <delete id="deleteUser" parameterType="int">
-        delete from t_user
-        where id=#{id}
+        delete from t_user where id=#{id}
     </delete>
 
     <update id="updateUser" parameterType="User">
@@ -72,7 +74,7 @@
             <selectKey order="AFTER" resultType="int" keyProperty="id">
                 select last_insert_id()
             </selectKey>
-        insert into t_user values(#{id},#{username},#{password},#{gender},#{registTime})
+        insert into t_user values(#{id},#{username},#{password},#{gender},#{registerTime})
     </insert>
 
 </mapper>
