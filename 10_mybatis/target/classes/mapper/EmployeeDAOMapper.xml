@@ -19,7 +19,6 @@
     <select id="queryEmployeeById" resultMap="emp_dept">
         select t_employees.id,t_employees.name,t_employees.salary,
                t_departments.id deptId ,t_departments.name deptName,t_departments.location
-
         from t_employees join t_departments
         on t_departments.id = t_employees.dept_id
         where t_employees.id=#{id}

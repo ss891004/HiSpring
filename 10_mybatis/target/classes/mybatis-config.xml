@@ -3,10 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-
     <!-- 导入外部的参数 -->
     <properties resource="jdbc.properties"></properties>
 
+    <settings>
+        <setting name="cacheEnabled" value="true"/> <!-- mybaits-config.xml中开启全局缓存（默认开启） -->
+    </settings>
     <!-- 实体类别名 -->
     <typeAliases>
         <!--<typeAlias type="com.qf.entity.User" alias="user_shine"/>-->
@@ -14,7 +16,7 @@
         <package name="org.example.entity"/>
     </typeAliases>
     <!--  核心配置信息 -->
-    <environments default="shine_config">
+    <environments default="druid_config">
         <!-- 数据库相关配置 -->
         <environment id="shine_config">
             <!-- 事务控制类型 -->
@@ -28,17 +30,33 @@
                 <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
+
+
+        <!-- 数据库相关配置 -->
+        <environment id="druid_config">
+            <!-- 事务控制类型 -->
+            <transactionManager type="jdbc"></transactionManager>
+            <!-- 数据连接参数  -->
+            <dataSource  type="org.example.util.DruidDSFactory" >
+                <!--注意property 的属性和普通的 不一样-->
+                <property name="driverClass" value="${jdbc.driver}"/>
+                <property name="jdbcUrl" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+
     </environments>
 
     <!-- 注册mapper文件 -->
     <mappers>
-        <!--<mapper resource="UserDAOMapper.xml"/>-->
         <mapper resource="mapper/UserDAOMapper.xml"/>
-         <mapper resource="mapper/StudentDAOMapper.xml"/>
-        <!--      <mapper resource="com/qf/dao/PassengerDAOMapper.xml"/>
-         <mapper resource="com/qf/dao/PassportDAOMapper.xml"/>
-         <mapper resource="com/qf/dao/DepartmentDAOMapper.xml"/>
-         <mapper resource="com/qf/dao/EmployeeDAOMapper.xml"/>
-       <mapper resource="com/qf/dao/SubjectDAOMapper.xml"/>-->
-    </mappers>
+        <mapper resource="mapper/UserDAOMapper2.xml"/>
+        <mapper resource="mapper/StudentDAOMapper.xml"/>
+        <mapper resource="mapper/PassengerDAOMapper.xml"/>
+        <mapper resource="mapper/PassportDAOMapper.xml"/>
+        <mapper resource="mapper/DepartmentDAOMapper.xml"/>
+        <mapper resource="mapper/EmployeeDAOMapper.xml"/>
+        <mapper resource="mapper/SubjectDAOMapper.xml"/> <!-- -->
+   </mappers>
 </configuration>

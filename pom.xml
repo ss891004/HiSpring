@@ -18,6 +18,7 @@
     <module>06_Config</module>
       <module>07_factory</module>
       <module>10_mybatis</module>
+      <module>09_aop</module>
   </modules>
 
   <name>HiSpring</name>

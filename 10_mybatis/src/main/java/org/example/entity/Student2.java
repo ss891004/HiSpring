@@ -5,11 +5,11 @@ import java.util.List;
 public class Student2 {
     private Integer id;
     private String name;
-    private Boolean sex;
+    private String sex;
 
     private List<Subject> subjects;
     public Student2(){}
-    public Student2(Integer id, String name, Boolean sex) {
+    public Student2(Integer id, String name, String sex) {
         this.id = id;
         this.name = name;
         this.sex = sex;
@@ -48,11 +48,11 @@ public class Student2 {
         this.name = name;
     }
 
-    public Boolean getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Boolean sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 }

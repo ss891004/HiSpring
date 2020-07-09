@@ -40,6 +40,10 @@ public class Util {
         return sqlSession;
     }
 
+    public static SqlSession getSession(){
+        return sqlSessionFactory.openSession();
+    }
+
     public static void closeSession(){
         SqlSession sqlSession = tl.get();
         sqlSession.close();

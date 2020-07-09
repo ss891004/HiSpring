@@ -5,14 +5,14 @@ import java.util.Date;
 public class Passenger {
     private Integer id;
     private String name;
-    private Boolean sex;
+    private String sex;
     private Date birthday;
 
     // 存储旅客的护照信息 ： 关系属性
     private Passport passport;
 
     public Passenger(){}
-    public Passenger(Integer id, String name, Boolean sex, Date birthday) {
+    public Passenger(Integer id, String name, String sex, Date birthday) {
         this.id = id;
         this.name = name;
         this.sex = sex;
@@ -54,11 +54,11 @@ public class Passenger {
         this.name = name;
     }
 
-    public Boolean getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Boolean sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 

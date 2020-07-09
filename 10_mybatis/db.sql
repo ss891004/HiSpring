@@ -14,6 +14,43 @@ create table t_user(
    gender tinyint
  )default charset =utf8;
 
+
+
+ create table t_stu_sub(
+ student_id int,
+ subject_id int
+ )default charset =utf8;
+
+ create table t_student2(
+    id int primary key auto_increment,
+    name varchar(50),
+    sex varchar(1)
+ )default charset =utf8;
+
+  create table t_subjects(
+    id int primary key auto_increment,
+    name varchar(50),
+    grade int
+  )default charset =utf8;
+
+ insert into t_student2 values(1001,'tom','M');
+ insert into t_student2 values(1002,'jack','M');
+ insert into t_student2 values(1003,'mary','F');
+ insert into t_student2 values(1004,'dori','M');
+
+ insert into t_subjects values(10,'java1',1);
+ insert into t_subjects values(20,'java2',2);
+ insert into t_subjects values(30,'java3',3);
+ insert into t_subjects values(40,'java4',4);
+
+ insert into t_stu_sub values(1001, 10);
+ insert into t_stu_sub values(1001, 20);
+ insert into t_stu_sub values(1002, 10);
+ insert into t_stu_sub values(1003, 30);
+
+
+
+
 create table t_departments(
     id int primary key auto_increment,
     name varchar(50),

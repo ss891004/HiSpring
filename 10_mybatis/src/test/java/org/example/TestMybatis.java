@@ -21,6 +21,8 @@ public class TestMybatis {
 
     @Test
     public void test3() {
+        //旅客和护照的关系
+        //一对一的关系
         PassengerDAO mapper = Util.getMapper(PassengerDAO.class);
         Passenger passenger = mapper.queryPassengerById(1);
         System.out.println("============");
@@ -29,21 +31,44 @@ public class TestMybatis {
 
         PassportDAO mapper1 = Util.getMapper(PassportDAO.class);
         Passport passport = mapper1.queryPassportById(1);
+        System.out.println("============");
         System.out.println(passport);
         System.out.println(passport.getPassenger());
+    }
 
+    @Test
+    public void test4() {
+        //部门与员工关系
+        //一对多的关系
         DepartmentDAO mapper2 = Util.getMapper(DepartmentDAO.class);
         Department department = mapper2.queryDepartmentById(2);
         System.out.println(department);
+        System.out.println(">>>>>>>>>>>>>>");
         List<Employee> employees = department.getEmployees();
         for (Employee employee : employees) {
             System.out.println(employee);
         }
-
+        System.out.println("============");
         EmployeeDAO mapper3 = Util.getMapper(EmployeeDAO.class);
         Employee employee = mapper3.queryEmployeeById(2);
+        System.out.println(">>>>>>>>>>>>>>");
         System.out.println(employee);
         System.out.println(employee.getDepartment());
+    }
+
+
+    @Test
+    public void test5() {
+        //学生与课程关系
+        //多对多的关系
+        SubjectDAO mapper2 = Util.getMapper(SubjectDAO.class);
+        Subject subject = mapper2.querySubjectById(10);
+        System.out.println(subject);
+        System.out.println(">>>>>>>>>>>>>>");
+        List<Student2> employees = subject.getStudents();
+        for (Student2 employee : employees) {
+            System.out.println(employee);
+        }
     }
 
 

@@ -18,11 +18,11 @@
 
     <select id="querySubjectById" resultMap="subject_student">
         select t_subjects.id,t_subjects.name,t_subjects.grade,
-               t_students.id stu_id,t_students.name stu_name,t_students.sex
+        t_student2.id stu_id,t_student2.name stu_name,t_student2.sex
         from t_subjects join t_stu_sub
         on t_subjects.id = t_stu_sub.subject_id
-        join t_students
-        on t_stu_sub.student_id = t_students.id
+        join t_student2
+        on t_stu_sub.student_id = t_student2.id
         where t_subjects.id=#{id}
     </select>
 

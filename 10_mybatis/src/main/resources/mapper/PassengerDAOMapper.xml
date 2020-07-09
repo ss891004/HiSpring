@@ -5,16 +5,17 @@
 <mapper namespace="org.example.dao.PassengerDAO">
 
     <resultMap id="passenger_passport" type="Passenger">
-        <id column="id" property="id"></id>
-        <result column="name" property="name"></result>
-        <result column="sex" property="sex"></result>
-        <result column="birthday" property="birthday"></result>
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="sex" column="sex" />
+        <result property="birthday" column="birthday" />
 
-        <!-- 描述 passId nationality expire 和  passport 映射规则 -->
+        <!-- 关系表中数据的封装规则    指定关系表的实体类型-->
+        <!-- 指定 “一方”关系时对象，使用 association -->
         <association property="passport" javaType="Passport">
-            <id column="passId" property="id"></id>
-            <result column="nationality" property="nationality"></result>
-            <result column="expire" property="expire"/>
+            <id property="id" column="passId"/>
+            <result property="nationality" column="nationality"/>
+            <result property="expire" column="expire" />
         </association>
     </resultMap>
 
@@ -26,5 +27,4 @@
         on t_passengers.id = t_passports.passenger_id
         where t_passengers.id=#{id}
     </select>
-
 </mapper>

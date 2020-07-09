@@ -4,17 +4,15 @@
 
 <mapper namespace="org.example.dao.DepartmentDAO">
 
-
     <resultMap id="dept_emp" type="Department">
-        <id column="id" property="id"></id>
-        <result column="name" property="name"></result>
-        <result column="location" property="location"></result>
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="location" property="location"/>
 
-        <!-- emp_id  emp_name  salary    employees -->
         <collection property="employees" ofType="Employee">
-            <id column="emp_id" property="id"></id>
-            <result column="emp_name" property="name"></result>
-            <result column="salary" property="salary"></result>
+            <id column="emp_id" property="id"/>
+            <result column="emp_name" property="name"/>
+            <result column="salary" property="salary"/>
         </collection>
     </resultMap>
     <select id="queryDepartmentById" resultMap="dept_emp">
