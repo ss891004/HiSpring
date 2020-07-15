@@ -8,6 +8,7 @@
 
     <settings>
         <setting name="cacheEnabled" value="true"/> <!-- mybaits-config.xml中开启全局缓存（默认开启） -->
+        <setting name="lazyLoadingEnabled" value="true"/> <!-- 开启延迟加载（默认false） -->
     </settings>
     <!-- 实体类别名 -->
     <typeAliases>

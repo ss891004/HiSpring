@@ -19,6 +19,7 @@
       <module>07_factory</module>
       <module>10_mybatis</module>
       <module>09_aop</module>
+    <module>15_springmvc</module>
   </modules>
 
   <name>HiSpring</name>
