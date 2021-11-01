@@ -6,12 +6,14 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- 单例：单实例 -->
     <!-- 要工厂生产的对象 -->
-    <bean id="mS" class="xml.service.MessageService"></bean>
+<!-- id：bean的唯一标识，可以通过这个标识从容器中获取这个bean对象
+    clss：这个bean的类型，完整类名称-->
+    <bean id="mS" class="xml.service.MessageService"/>
 
     <!--id 和 name 区别-->
-    <bean name="mS1 mS2 mS3" class="xml.service.MessageService"></bean>
-    <bean name="mS4;mS5;mS6" class="xml.service.MessageService"></bean>
-    <bean name="mS7,mS8,mS9" class="xml.service.MessageService"></bean>
+    <bean name="mS1 mS2 mS3" class="xml.service.MessageService"/>
+    <bean name="mS4;mS5;mS6" class="xml.service.MessageService"/>
+    <bean name="mS7,mS8,mS9" class="xml.service.MessageService"/>
 
     <bean id="messagesPrinter" class="xml.service.MessagesPrinter" >
         <property name="messageService" ref="mS"/>
@@ -21,11 +23,18 @@
     <!-- 第一种根据index参数下标设置 -->
     <!-- 第二种根据参数名字设置 -->
     <!-- 第三种根据参数类型设置 -->
+<!--    constructor-arg用于指定构造方法参数的值-->
+<!--    index：构造方法中参数的位置，从0开始，依次递增-->
+<!--    value：指定参数的值-->
+<!--    ref：当插入的值为容器内其他bean的时候，这个值为容器中对应bean的名称-->
     <bean id="student" class="xml.model.Student">
         <constructor-arg name="id" value="1" />
         <constructor-arg name="name" value="shine"/>
         <constructor-arg name="sex" value="male"/>
         <constructor-arg name="age" value="19"/>
+    </bean>
+
+    <bean id="student2" class="xml.model.Student">
     </bean>
 
     <bean id="addr" class="xml.model.Address">

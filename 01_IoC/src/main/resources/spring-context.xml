@@ -23,11 +23,18 @@
     <!-- 第一种根据index参数下标设置 -->
     <!-- 第二种根据参数名字设置 -->
     <!-- 第三种根据参数类型设置 -->
+<!--    constructor-arg用于指定构造方法参数的值-->
+<!--    index：构造方法中参数的位置，从0开始，依次递增-->
+<!--    value：指定参数的值-->
+<!--    ref：当插入的值为容器内其他bean的时候，这个值为容器中对应bean的名称-->
     <bean id="student" class="xml.model.Student">
         <constructor-arg name="id" value="1" />
         <constructor-arg name="name" value="shine"/>
         <constructor-arg name="sex" value="male"/>
         <constructor-arg name="age" value="19"/>
+    </bean>
+
+    <bean id="student2" class="xml.model.Student">
     </bean>
 
     <bean id="addr" class="xml.model.Address">

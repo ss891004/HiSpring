@@ -39,10 +39,23 @@
     - 定义配置类：@Configuration： 表示当前类是一个配置类
 
 
-###装配bean的三种方式:
-- 自动装配
-- Java中进行显示的配置
-- XML中进行显示的配置
+### bean xml
+```text
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+    <import resource="引入其他bean xml配置文件" />
+    <bean id="bean标识" class="完整类型名称"/>
+    <alias name="bean标识" alias="别名" />
+</beans>
+```
+### 创建bean
++ 通过反射调用构造方法创建bean对象
++ 通过静态工厂方法创建bean对象
++ 通过实例工厂方法创建bean对象
++ 通过FactoryBean创建bean对象
 
 
 
