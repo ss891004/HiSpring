@@ -11,7 +11,7 @@ public class App {
     public static void main(String[] args) {
 
         //初始化，会将xml文件中所有bean对象进行初始化
-        ApplicationContext ac = new ClassPathXmlApplicationContext("spring-context.xml");
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring-bean.xml");
         //获取bean对象
         MessagesPrinter mp= ac.getBean("messagesPrinter",MessagesPrinter.class);
         mp.printer();

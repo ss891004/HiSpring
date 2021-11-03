@@ -1,6 +1,8 @@
 package xml.model;
 
 
+import java.beans.ConstructorProperties;
+
 public class Student {
     public Integer getId() {
         return id;
@@ -34,6 +36,15 @@ public class Student {
         this.age = age;
     }
 
+    //通过ConstructorProperties注解来定义参数的名称，将这个注解加在构造方法上面
+    @ConstructorProperties({"id","name", "sex"})
+    public Student(Integer id1, String name1, String sex1) {
+        this.id = id1;
+        this.name = name1;
+        this.sex = sex1;
+        this.age=20;
+    }
+
     private Integer id;
     private String name;
     private String sex;
@@ -49,5 +60,15 @@ public class Student {
 
     public Student() {
         System.out.println("Student-NoneConstructor");
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

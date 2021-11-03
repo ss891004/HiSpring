@@ -53,12 +53,71 @@
 ```
 ### 创建bean
 + 通过反射调用构造方法创建bean对象
+  
+```text
+<bean id="bean名称" name="bean名称或者别名" class="bean的完整类型名称">
+    <constructor-arg index="0" value="bean的值" ref="引用的bean名称" />
+    <constructor-arg index="1" value="bean的值" ref="引用的bean名称" />
+    <constructor-arg index="2" value="bean的值" ref="引用的bean名称" />
+    ....
+    <constructor-arg index="n" value="bean的值" ref="引用的bean名称" />
+</bean>
+```
+
 + 通过静态工厂方法创建bean对象
+  ```text
+<bean id="bean名称" name="" class="静态工厂完整类名" factory-method="静态工厂的方法">
+    <constructor-arg index="0" value="bean的值" ref="引用的bean名称" />
+    <constructor-arg index="1" value="bean的值" ref="引用的bean名称" />
+    <constructor-arg index="2" value="bean的值" ref="引用的bean名称" />
+    ....
+    <constructor-arg index="n" value="bean的值" ref="引用的bean名称" />
+</bean>
+```
 + 通过实例工厂方法创建bean对象
+```text
+<bean id="bean名称" factory-bean="需要调用的实例对象bean名称" factory-method="bean对象中的方法">
+    <constructor-arg index="0" value="bean的值" ref="引用的bean名称" />
+    <constructor-arg index="1" value="bean的值" ref="引用的bean名称" />
+    <constructor-arg index="2" value="bean的值" ref="引用的bean名称" />
+    ....
+    <constructor-arg index="n" value="bean的值" ref="引用的bean名称" />
+</bean>
+```
 + 通过FactoryBean创建bean对象
 
 
+### 作用域
+```text
+<bean id="" class="" scope="作用域" />
+```
++ singleton
+  + 当scope的值设置为singleton的时候，整个spring容器中只会存在一个bean实例,singleton是scope的默认值
+  + 单例bean是整个应用共享的，所以需要考虑到线程安全问题,不要共享变量
++ prototype
+  + 表示这个bean是多例的，通过容器每次获取的bean都是不同的实例，每次获取都会重新创建一个bean实例对象
++ request
+  + 当一个bean的作用域为request，表示在一次http请求中，一个bean对应一个实例；对每个http请求都会创建一个bean实例，request结束的时候，这个bean也就结束了
++ session
+  + session级别共享的bean，每个会话会对应一个bean实例，不同的session对应不同的bean实例
++ application
+  
 
+### 依赖注入
++ 系统中类和类之间是有依赖关系的，如果一个类对外提供的功能需要通过调用其他类的方法来实现的时候，说明这两个类之间存在依赖关系
++ 构造函数的方式
+  + 根据构造器参数索引注入
+  + 根据构造器参数类型注入
+  + 根据构造器参数名称注入
++ set属性的方式 
+  + 属性都是private访问级别的
+  + 属性通常情况下通过一组setter（修改器）和getter（访问器）方法来访问
+  + 注入容器中的bean写法：
+    + ref属性方式
+    + 内置bean的方式
+
+#### 手动注入
+#### 自动注入
 
 
 ### spring-context.xml

@@ -10,7 +10,7 @@ public class StudentStaticFactory {
      * @return
      */
     public static Student buildStudent1() {
-        System.out.println(StudentStaticFactory.class + ".buildUser1()");
+        System.out.println(StudentStaticFactory.class + ".buildStudent1()");
         Student userModel = new Student();
         userModel.setName("我是无参静态构造方法创建的!");
         return userModel;
@@ -22,8 +22,8 @@ public class StudentStaticFactory {
      * @param age  年龄
      * @return
      */
-    public static Student buildStudent1(String name, int age) {
-        System.out.println(StudentStaticFactory.class + ".buildUser2()");
+    public static Student buildStudent2(String name, int age) {
+        System.out.println(StudentStaticFactory.class + ".buildStudent2()");
         Student userModel = new Student();
         userModel.setName(name);
         userModel.setAge(age);
