@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="mS" class="xml.service.MessageService"/>
+
+    <!--id 和 name 区别-->
+    <bean name="mS1 mS2 mS3" class="xml.service.MessageService"/>
+    <bean name="mS4;mS5;mS6" class="xml.service.MessageService"/>
+    <bean name="mS7,mS8,mS9" class="xml.service.MessageService"/>
+
+    <bean id="messagesPrinter" class="xml.service.MessagesPrinter">
+        <property name="messageService" ref="mS"/>
+    </bean>
+
+<!--
+property用于对属性的值进行配置，可以有多个
+name：属性的名称
+value：属性的值
+-->
+    <bean id="addr" class="xml.model.Address">
+        <property name="id" value="123456"/>
+        <property name="city" value="bj"/>
+    </bean>
+
+
+    <!-- Set注入 -->
+    <bean id="user" class="xml.model.User">
+        <!-- 简单：jdk8种基本数据类型  String  Date -->
+        <property name="id" value="10"/>
+        <property name="password" value="123abc"/>
+        <property name="sex" value="male"/>
+        <property name="age" value="19"/>
+        <property name="bornDate" value="2020/12/12 12:20:30"/>
+
+        <!-- 数组 -->
+        <property name="hobbys">
+            <array>
+                <value>football</value>
+                <value>basketball</value>
+            </array>
+        </property>
+
+        <!-- 集合 -->
+        <!-- list中简单类型-->
+        <property name="names">
+            <list>
+                <value>tom</value>
+                <value>jack</value>
+            </list>
+        </property>
+
+        <!-- list中复杂类型-->
+        <property name="adds">
+            <list>
+                <ref bean="addr"/>
+                <ref bean="addr"/>
+                <ref bean="addr"/>
+            </list>
+        </property>
+
+        <!--不可重复-->
+        <property name="phones">
+            <set>
+                <value>131111111</value>
+                <value>131222222</value>
+            </set>
+        </property>
+
+        <property name="countries">
+            <map>
+                <entry key="zh" value="china"></entry>
+                <entry key="en" value="english"></entry>
+            </map>
+        </property>
+
+        <property name="files">
+            <props>
+                <prop key="url">jdbc:mysql:xxx</prop>
+                <prop key="username">root</prop>
+            </props>
+        </property>
+
+        <!-- 自建类型 -->
+        <property name="address" ref="addr"></property>
+    </bean>
+</beans>

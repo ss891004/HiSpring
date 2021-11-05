@@ -117,9 +117,148 @@
     + 内置bean的方式
 
 #### 手动注入
+
+
 #### 自动注入
 
+```text
+<bean id="" class="" autowire="byType|byName|constructor|default" />
+byteName：按照名称进行注入
+byType：按类型进行注入
+constructor：按照构造方法进行注入
+default：默认注入方式
 
+```
+### bean初始化
++ 实时初始化
+  + 在容器启动过程中被创建组装好的bean，称为实时初始化的bean，spring中默认定义的bean都是实时初始化的bean，这些bean默认都是单例的，在容器启动过程中会被创建好，然后放在spring容器中以供使用。
++ 延迟初始化
+  + <bean lazy-init="是否是延迟初始化" />
+
+  
+  
+### 注解
+```text
+public @interface 注解名称{
+    [public] 参数类型 参数名称1() [default 参数默认值];
+    [public] 参数类型 参数名称2() [default 参数默认值];
+    [public] 参数类型 参数名称n() [default 参数默认值];
+}
+
+访问修饰符必须为public，不写默认为public
+该元素的类型只能是基本数据类型、String、Class、枚举类型、注解类型（体现了注解的嵌套效果）以及上述类型的一位数组
+该元素的名称一般定义为名词，如果注解中只有一个元素，请把名字起为value（后面使用会带来便利操作）
+参数名称后面的()不是定义方法参数的地方，也不能在括号中定义任何参数，仅仅只是一个特殊的语法
+default代表默认值，值必须和第2点定义的类型一致
+如果没有默认值，代表后续使用注解时必须给该类型元素赋值
+
+
+```
+
++ @Target 指定注解的使用范围
+```java
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.ANNOTATION_TYPE)
+public @interface Target {
+    ElementType[] value();
+}
+```
+```java
+package java.lang.annotation;
+/*注解的使用范围*/
+public enum ElementType {
+       /*类、接口、枚举、注解上面*/
+    TYPE,
+    /*字段上*/
+    FIELD,
+    /*方法上*/
+    METHOD,
+    /*方法的参数上*/
+    PARAMETER,
+    /*构造函数上*/
+    CONSTRUCTOR,
+    /*本地变量上*/
+    LOCAL_VARIABLE,
+    /*注解上*/
+    ANNOTATION_TYPE,
+    /*包上*/
+    PACKAGE,
+    /*类型参数上*/
+    TYPE_PARAMETER,
+    /*类型名称上*/
+    TYPE_USE
+}
+```
+
++ @Retention  指定注解的保留策略
+
+```java
+public enum RetentionPolicy {
+    /*注解只保留在源码中，编译为字节码之后就丢失了，也就是class文件中就不存在了*/
+    SOURCE,
+    /*注解只保留在源码和字节码中，运行阶段会丢失*/
+    CLASS,
+    /*源码、字节码、运行期间都存在*/
+    RUNTIME
+}
+```
+
++ @Inherit：实现类之间的注解继承
+
++ @Repeatable重复使用注解
+
+
+### Spring注解
+#### @ComponentScan
++ 之前通过xml的方式定义bean，里面会写很多bean元素，然后spring启动的时候，就会读取bean xml，然后解析这些配置，然后会将这些bean注册到spring容器中，供使用者使用。
+
++ @Configuration这个注解可以加在类上，让这个类的功能等同于一个bean xml配置文件
+```java
+@Configuration
+public class ConfigBean {
+}
+```
+```text
+//此时ConfigBean类中没有任何内容，相当于一个空的xml配置文件，此时我们要在ConfigBean类中注册bean，那么我们就要用到@Bean注解了。
+AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigBean.class);
+```
+
+#### @Bean
++ 这个注解类似于bean xml配置文件中的bean元素，用来在spring容器中注册一个bean。
+```java
+@Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE}) //@1
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface Bean {
+    @AliasFor("name")
+    String[] value() default {};
+    @AliasFor("value")
+    String[] name() default {};
+    @Deprecated
+    Autowire autowire() default Autowire.NO;
+    boolean autowireCandidate() default true;
+    String initMethod() default "";
+    String destroyMethod() default AbstractBeanDefinition.INFER_METHOD;
+}
+
+```
+@1：说明这个注解可以用在方法和注解类型上面。
+
+每个参数含义：
+
+value和name是一样的，设置的时候，这2个参数只能选一个，原因是@AliasFor导致的
+@AliasFor这个注解不清楚的可以看这个文章：详解注解
+value：字符串数组，第一个值作为bean的名称，其他值作为bean的别名
+autowire：这个参数上面标注了@Deprecated，表示已经过期了，不建议使用了
+autowireCandidate：是否作为其他对象注入时候的候选bean，之前的文章中专门介绍过这个属性，不清楚的可以去看看：autowire-candidate详解
+initMethod：bean初始化的方法，这个和生命周期有关
+destroyMethod：bean销毁的方法，也是和生命周期相关的
+
+
+#### @ComponentScans
+  
+  
 ### spring-context.xml
 ```text
 xmlns其实是XML Namespace的缩写，可译为“XML命名空间”
