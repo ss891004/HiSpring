@@ -210,6 +210,7 @@ public enum RetentionPolicy {
 
 
 ### Spring注解
+
 #### @ComponentScan
 + 之前通过xml的方式定义bean，里面会写很多bean元素，然后spring启动的时候，就会读取bean xml，然后解析这些配置，然后会将这些bean注册到spring容器中，供使用者使用。
 
